@@ -1,0 +1,17 @@
+export enum DesignationEnum {
+  JUNIORBACKENDDEVELOPER = 'Junior Developer',
+  SENIORBACKENDDEVELOPER = 'Senior Developer',
+  BACKENDDEVELOPER = 'Developer',
+  JUNIORFRONTENDDEVELOPER = 'Junior Developer',
+  SENIORFRONTENDDEVELOPER = 'Senior Developer',
+  FRONTENDDEVELOPER = 'Developer',
+  JUNIORDEVELOPER = 'Junior Developer',
+  SENIORDEVELOPER = 'Senior Developer',
+  DEVELOPER = 'Developer',
+  TEAMLEAD = 'Team Lead',
+  SOFTWAREDEVELOPER = 'Developer',
+  SRSOFTWAREDEVELOPER = 'Senior Developer',
+  TEAMMANAGER = 'Team Manager',
+  SRDATABASEADMINISTRATOR = 'Senior Database Administrator',
+  JRSOFTWAREDEVELOPER = 'Junior Developer',
+}

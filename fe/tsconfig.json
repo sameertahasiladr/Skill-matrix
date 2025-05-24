@@ -1,0 +1,14 @@
+{
+	// https://nuxt.com/docs/guide/concepts/typescript
+	"extends": "./.nuxt/tsconfig.json",
+	"compilerOptions": {
+		"target": "ES6", // Set target to ES6 or higher
+		"module": "ESNext", // Use ESNext module system
+		"moduleResolution": "node", // Resolve modules as Node does
+		"esModuleInterop": true, // Allow default imports from non-ESM modules
+		"skipLibCheck": true, // Skip checking library files for TypeScript
+		"strict": true, // Enable strict type checking
+		"types": ["@playwright/test"] // Include Playwright types
+	},
+	"include": ["./**/*"]
+}

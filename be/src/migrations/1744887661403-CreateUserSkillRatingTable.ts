@@ -1,0 +1,126 @@
+import { MigrationInterface, QueryRunner } from "typeorm";
+
+export class CreateUserSkillRatingTable1744887661403 implements MigrationInterface {
+    name = 'CreateUserSkillRatingTable1744887661403'
+
+    public async up(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`CREATE TABLE \`user_skill_rating\` (\`id\` varchar(36) NOT NULL, \`cci_id\` varchar(255) NOT NULL, \`createdAt\` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6), \`updatedAt\` datetime(6) NOT NULL DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6), \`mainSkillId\` varchar(36) NULL, \`levelId\` varchar(36) NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`);
+        await queryRunner.query(`ALTER TABLE \`levels\` CHANGE \`description\` \`description\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`legend\` DROP FOREIGN KEY \`FK_f2a201455876740a6f917541189\``);
+        await queryRunner.query(`ALTER TABLE \`legend\` DROP FOREIGN KEY \`FK_16563d3785ad6a6d5a171070e6c\``);
+        await queryRunner.query(`ALTER TABLE \`legend\` DROP FOREIGN KEY \`FK_f48a1ae8075d5a787be1ebafaf7\``);
+        await queryRunner.query(`ALTER TABLE \`legend\` CHANGE \`designationId\` \`designationId\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`legend\` CHANGE \`roleId\` \`roleId\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`legend\` CHANGE \`mainSkillId\` \`mainSkillId\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_478e129d3f468c1f3612ec80fb3\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_fe764d01c2f41e04393204c0a1e\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_db37214f18c2ab1072260896017\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_ed7b9756ced5b3ab109304db071\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`description\` \`description\` varchar(1000) NULL`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`example\` \`example\` text NULL`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`responsibilities\` \`responsibilities\` text NULL`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`levels_id\` \`levels_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`role_id\` \`role_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`mainSkill_id\` \`mainSkill_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`designation_id\` \`designation_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` DROP FOREIGN KEY \`FK_df4726c622c12a8bfa37bf6d23b\``);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` DROP FOREIGN KEY \`FK_7620c24c7cfde6a19267f120b29\``);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` CHANGE \`skills_id\` \`skills_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` CHANGE \`tags_id\` \`tags_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` DROP FOREIGN KEY \`FK_8c727fe62ed068c16a6cb6cbf4a\``);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`date_of_leaving\` \`date_of_leaving\` date NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_one\` \`current_client_one\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_two\` \`current_client_two\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_three\` \`current_client_three\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_four\` \`current_client_four\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_experience\` \`current_experience\` decimal(10,2) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`prev_emp_experience\` \`prev_emp_experience\` decimal(10,2) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`years_served_in_curr_designation\` \`years_served_in_curr_designation\` decimal(10,2) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_business_sys_qualifications\` \`current_business_sys_qualifications\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_core_tech_stack\` \`current_core_tech_stack\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_secondary_tech_stack\` \`current_secondary_tech_stack\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`personal_interests\` \`personal_interests\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_designation_id\` \`current_designation_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`user\` DROP FOREIGN KEY \`FK_0f4e0316052db319b0e7e973e9b\``);
+        await queryRunner.query(`ALTER TABLE \`user\` CHANGE \`emp_id\` \`emp_id\` varchar(36) NULL`);
+        await queryRunner.query(`ALTER TABLE \`job\` CHANGE \`uploadDate\` \`uploadDate\` timestamp NOT NULL`);
+        await queryRunner.query(`ALTER TABLE \`job\` DROP COLUMN \`uploadSummary\``);
+        await queryRunner.query(`ALTER TABLE \`job\` ADD \`uploadSummary\` json NULL`);
+        await queryRunner.query(`ALTER TABLE \`job\` CHANGE \`download\` \`download\` varchar(255) NULL`);
+        await queryRunner.query(`ALTER TABLE \`tokens\` CHANGE \`expires_at\` \`expires_at\` timestamp NOT NULL`);
+        await queryRunner.query(`ALTER TABLE \`legend\` ADD CONSTRAINT \`FK_f2a201455876740a6f917541189\` FOREIGN KEY (\`designationId\`) REFERENCES \`designation\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`legend\` ADD CONSTRAINT \`FK_16563d3785ad6a6d5a171070e6c\` FOREIGN KEY (\`roleId\`) REFERENCES \`role\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`legend\` ADD CONSTRAINT \`FK_f48a1ae8075d5a787be1ebafaf7\` FOREIGN KEY (\`mainSkillId\`) REFERENCES \`main_skill\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_478e129d3f468c1f3612ec80fb3\` FOREIGN KEY (\`levels_id\`) REFERENCES \`levels\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_fe764d01c2f41e04393204c0a1e\` FOREIGN KEY (\`role_id\`) REFERENCES \`role\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_db37214f18c2ab1072260896017\` FOREIGN KEY (\`mainSkill_id\`) REFERENCES \`main_skill\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_ed7b9756ced5b3ab109304db071\` FOREIGN KEY (\`designation_id\`) REFERENCES \`designation\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` ADD CONSTRAINT \`FK_df4726c622c12a8bfa37bf6d23b\` FOREIGN KEY (\`skills_id\`) REFERENCES \`skill_matrix\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` ADD CONSTRAINT \`FK_7620c24c7cfde6a19267f120b29\` FOREIGN KEY (\`tags_id\`) REFERENCES \`tags\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`user_skill_rating\` ADD CONSTRAINT \`FK_b20363aa8f250c9a99ca89fb195\` FOREIGN KEY (\`mainSkillId\`) REFERENCES \`main_skill\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`user_skill_rating\` ADD CONSTRAINT \`FK_814b5c91a8e8ac36531c8acd9a7\` FOREIGN KEY (\`levelId\`) REFERENCES \`levels\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`employee\` ADD CONSTRAINT \`FK_8c727fe62ed068c16a6cb6cbf4a\` FOREIGN KEY (\`current_designation_id\`) REFERENCES \`designation\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`user\` ADD CONSTRAINT \`FK_0f4e0316052db319b0e7e973e9b\` FOREIGN KEY (\`emp_id\`) REFERENCES \`employee\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+    }
+
+    public async down(queryRunner: QueryRunner): Promise<void> {
+        await queryRunner.query(`ALTER TABLE \`user\` DROP FOREIGN KEY \`FK_0f4e0316052db319b0e7e973e9b\``);
+        await queryRunner.query(`ALTER TABLE \`employee\` DROP FOREIGN KEY \`FK_8c727fe62ed068c16a6cb6cbf4a\``);
+        await queryRunner.query(`ALTER TABLE \`user_skill_rating\` DROP FOREIGN KEY \`FK_814b5c91a8e8ac36531c8acd9a7\``);
+        await queryRunner.query(`ALTER TABLE \`user_skill_rating\` DROP FOREIGN KEY \`FK_b20363aa8f250c9a99ca89fb195\``);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` DROP FOREIGN KEY \`FK_7620c24c7cfde6a19267f120b29\``);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` DROP FOREIGN KEY \`FK_df4726c622c12a8bfa37bf6d23b\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_ed7b9756ced5b3ab109304db071\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_db37214f18c2ab1072260896017\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_fe764d01c2f41e04393204c0a1e\``);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` DROP FOREIGN KEY \`FK_478e129d3f468c1f3612ec80fb3\``);
+        await queryRunner.query(`ALTER TABLE \`legend\` DROP FOREIGN KEY \`FK_f48a1ae8075d5a787be1ebafaf7\``);
+        await queryRunner.query(`ALTER TABLE \`legend\` DROP FOREIGN KEY \`FK_16563d3785ad6a6d5a171070e6c\``);
+        await queryRunner.query(`ALTER TABLE \`legend\` DROP FOREIGN KEY \`FK_f2a201455876740a6f917541189\``);
+        await queryRunner.query(`ALTER TABLE \`tokens\` CHANGE \`expires_at\` \`expires_at\` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP()`);
+        await queryRunner.query(`ALTER TABLE \`job\` CHANGE \`download\` \`download\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`job\` DROP COLUMN \`uploadSummary\``);
+        await queryRunner.query(`ALTER TABLE \`job\` ADD \`uploadSummary\` longtext COLLATE "utf8mb4_bin" NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`job\` CHANGE \`uploadDate\` \`uploadDate\` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP() ON UPDATE CURRENT_TIMESTAMP()`);
+        await queryRunner.query(`ALTER TABLE \`user\` CHANGE \`emp_id\` \`emp_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`user\` ADD CONSTRAINT \`FK_0f4e0316052db319b0e7e973e9b\` FOREIGN KEY (\`emp_id\`) REFERENCES \`employee\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_designation_id\` \`current_designation_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`personal_interests\` \`personal_interests\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_secondary_tech_stack\` \`current_secondary_tech_stack\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_core_tech_stack\` \`current_core_tech_stack\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_business_sys_qualifications\` \`current_business_sys_qualifications\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`years_served_in_curr_designation\` \`years_served_in_curr_designation\` decimal(10,2) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`prev_emp_experience\` \`prev_emp_experience\` decimal(10,2) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_experience\` \`current_experience\` decimal(10,2) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_four\` \`current_client_four\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_three\` \`current_client_three\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_two\` \`current_client_two\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`current_client_one\` \`current_client_one\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` CHANGE \`date_of_leaving\` \`date_of_leaving\` date NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`employee\` ADD CONSTRAINT \`FK_8c727fe62ed068c16a6cb6cbf4a\` FOREIGN KEY (\`current_designation_id\`) REFERENCES \`designation\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` CHANGE \`tags_id\` \`tags_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` CHANGE \`skills_id\` \`skills_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` ADD CONSTRAINT \`FK_7620c24c7cfde6a19267f120b29\` FOREIGN KEY (\`tags_id\`) REFERENCES \`tags\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`tag_skills\` ADD CONSTRAINT \`FK_df4726c622c12a8bfa37bf6d23b\` FOREIGN KEY (\`skills_id\`) REFERENCES \`skill_matrix\`(\`id\`) ON DELETE CASCADE ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`designation_id\` \`designation_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`mainSkill_id\` \`mainSkill_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`role_id\` \`role_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`levels_id\` \`levels_id\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`responsibilities\` \`responsibilities\` text NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`example\` \`example\` text NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` CHANGE \`description\` \`description\` varchar(1000) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_ed7b9756ced5b3ab109304db071\` FOREIGN KEY (\`designation_id\`) REFERENCES \`designation\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_db37214f18c2ab1072260896017\` FOREIGN KEY (\`mainSkill_id\`) REFERENCES \`main_skill\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_fe764d01c2f41e04393204c0a1e\` FOREIGN KEY (\`role_id\`) REFERENCES \`role\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`skill_matrix\` ADD CONSTRAINT \`FK_478e129d3f468c1f3612ec80fb3\` FOREIGN KEY (\`levels_id\`) REFERENCES \`levels\`(\`id\`) ON DELETE SET NULL ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`legend\` CHANGE \`mainSkillId\` \`mainSkillId\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`legend\` CHANGE \`roleId\` \`roleId\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`legend\` CHANGE \`designationId\` \`designationId\` varchar(36) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`ALTER TABLE \`legend\` ADD CONSTRAINT \`FK_f48a1ae8075d5a787be1ebafaf7\` FOREIGN KEY (\`mainSkillId\`) REFERENCES \`main_skill\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`legend\` ADD CONSTRAINT \`FK_16563d3785ad6a6d5a171070e6c\` FOREIGN KEY (\`roleId\`) REFERENCES \`role\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`legend\` ADD CONSTRAINT \`FK_f2a201455876740a6f917541189\` FOREIGN KEY (\`designationId\`) REFERENCES \`designation\`(\`id\`) ON DELETE NO ACTION ON UPDATE NO ACTION`);
+        await queryRunner.query(`ALTER TABLE \`levels\` CHANGE \`description\` \`description\` varchar(255) NULL DEFAULT 'NULL'`);
+        await queryRunner.query(`DROP TABLE \`user_skill_rating\``);
+    }
+
+}
